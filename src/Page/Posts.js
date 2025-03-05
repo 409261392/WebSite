@@ -20,48 +20,36 @@ function Posts() {
       });
   }, []);
   return (
-    <Container>
-      <Grid>
-        <Grid.Row>
-          <Grid.Column width={3}>
-            <Topics />
-          </Grid.Column>
-          <Grid.Column width={10}>
-            <Item.Group>
-              {post.map((post) => {
-                return (
-                  <Item key={post.id} as={Link} to={`/posts/${post.id}`}>
-                    <Item.Image
-                      src={
-                        post.imageUrl ||
-                        "https://react.semantic-ui.com/images/wireframe/image.png"
-                      }
-                      size="small"
-                    />
-                    <Item.Content>
-                      <Item.Meta>
-                        {post.author.photoURL ? (
-                          <Image src={post.author.photoURL} />
-                        ) : (
-                          <Icon name="user circle" />
-                        )}
-                        {post.topic}•{post.author.displayName || "user"}
-                      </Item.Meta>
-                      <Item.Header>{post.title}</Item.Header>
-                      <Item.Description>{post.content}</Item.Description>
-                      <Item.Extra>
-                        留言{post.commentsCount || 0}•讚{post.likedBy?.length || 0}
-                      </Item.Extra>
-                    </Item.Content>
-                  </Item>
-                );
-              })}
-            </Item.Group>
-          </Grid.Column>
-          <Grid.Column width={3}></Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Container>
+    <Item.Group>
+      {post.map((post) => {
+        return (
+          <Item key={post.id} as={Link} to={`/posts/${post.id}`}>
+            <Item.Image
+              src={
+                post.imageUrl ||
+                "https://react.semantic-ui.com/images/wireframe/image.png"
+              }
+              size="small"
+            />
+            <Item.Content>
+              <Item.Meta>
+                {post.author.photoURL ? (
+                  <Image src={post.author.photoURL} />
+                ) : (
+                  <Icon name="user circle" />
+                )}
+                {post.topic}•{post.author.displayName || "user"}
+              </Item.Meta>
+              <Item.Header>{post.title}</Item.Header>
+              <Item.Description>{post.content}</Item.Description>
+              <Item.Extra>
+                留言{post.commentsCount || 0}•讚{post.likedBy?.length || 0}
+              </Item.Extra>
+            </Item.Content>
+          </Item>
+        );
+      })}
+    </Item.Group>
   );
 }
 

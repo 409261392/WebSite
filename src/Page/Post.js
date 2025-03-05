@@ -91,81 +91,71 @@ function Post() {
   }
 
   return (
-    <Container>
-      <Grid>
-        <Grid.Row>
-          <Grid.Column width={3}>
-            <Topics />
-          </Grid.Column>
-          <Grid.Column width={10}>
-            {post.author.photoURL ? (
-              <Image src={post.author.photoURL} />
-            ) : (
-              <Icon name="user circle"></Icon>
-            )}
-            {post.author.displayName || "使用者"}
-            <Header>
-              {post.title}
-              <Header.Subheader>
-                {post.topic}.{post.createdAt?.toDate().toLocaleDateString()}
-              </Header.Subheader>
-            </Header>
-            <Image src={post.imageUrl} />
-            <Segment basic vertical>
-              {post.content}
-            </Segment>
-            <Segment basic vertical>
-              留言{post.commentsCount || 0}•讚{post.likedBy?.length || 0}•
-              <Icon
-                name={`thumbs up${isliked ? "" : " outline"}`}
-                color={isliked ? "blue" : "grey"}
-                link
-                onClick={() => toggle(isliked, "likedBy")}
-              ></Icon>
-              •
-              <Icon
-                name={`bookmark${iscollected ? "" : " outline"}`}
-                color={iscollected ? "blue" : "grey"}
-                link
-                onClick={() => toggle(iscollected, "collectedBy")}
-              ></Icon>
-            </Segment>
-            <Comment.Group>
-              <Form reply>
-                <Form.TextArea
-                  value={commentContent}
-                  onChange={(e) => {
-                    setCommentContent(e.target.value);
-                  }}
-                />
-                <Form.Button onClick={onSubmit} loading={isloading}>
-                  留言
-                </Form.Button>
-              </Form>
-              <Header>{post.commentsCount || 0}則留言</Header>
-              {comments.map((comment) => {
-                return (
-                  <Comment>
-                    <Comment.Avatar src={comment.author.photoURL} />
-                    <Comment.Content>
-                      <Comment.Author as="span">
-                        {comment.author.displayName || "使用者"}
-                      </Comment.Author>
-                      <Comment.Metadata>
-                        {" "}
-                        {comment.createdAt.toDate().toLocaleString()}
-                      </Comment.Metadata>
-                      <Comment.Text>{comment.content}</Comment.Text>
-                    </Comment.Content>
-                  </Comment>
-                );
-              })}
-            </Comment.Group>
-          </Grid.Column>
-          <Grid.Column width={3}></Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Container>
+    <>
+      {post.author.photoURL ? (
+        <Image src={post.author.photoURL} />
+      ) : (
+        <Icon name="user circle"></Icon>
+      )}
+      {post.author.displayName || "使用者"}
+      <Header>
+        {post.title}
+        <Header.Subheader>
+          {post.topic}.{post.createdAt?.toDate().toLocaleDateString()}
+        </Header.Subheader>
+      </Header>
+      <Image src={post.imageUrl} />
+      <Segment basic vertical>
+        {post.content}
+      </Segment>
+      <Segment basic vertical>
+        留言{post.commentsCount || 0}•讚{post.likedBy?.length || 0}•
+        <Icon
+          name={`thumbs up${isliked ? "" : " outline"}`}
+          color={isliked ? "blue" : "grey"}
+          link
+          onClick={() => toggle(isliked, "likedBy")}
+        ></Icon>
+        •
+        <Icon
+          name={`bookmark${iscollected ? "" : " outline"}`}
+          color={iscollected ? "blue" : "grey"}
+          link
+          onClick={() => toggle(iscollected, "collectedBy")}
+        ></Icon>
+      </Segment>
+      <Comment.Group>
+        <Form reply>
+          <Form.TextArea
+            value={commentContent}
+            onChange={(e) => {
+              setCommentContent(e.target.value);
+            }}
+          />
+          <Form.Button onClick={onSubmit} loading={isloading}>
+            留言
+          </Form.Button>
+        </Form>
+        <Header>{post.commentsCount || 0}則留言</Header>
+        {comments.map((comment) => {
+          return (
+            <Comment>
+              <Comment.Avatar src={comment.author.photoURL} />
+              <Comment.Content>
+                <Comment.Author as="span">
+                  {comment.author.displayName || "使用者"}
+                </Comment.Author>
+                <Comment.Metadata>
+                  {" "}
+                  {comment.createdAt.toDate().toLocaleString()}
+                </Comment.Metadata>
+                <Comment.Text>{comment.content}</Comment.Text>
+              </Comment.Content>
+            </Comment>
+          );
+        })}
+      </Comment.Group>
+    </>
   );
 }
 export default Post;
