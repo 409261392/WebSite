@@ -24,7 +24,7 @@ function Header() {
 
   return (
     <Menu stackable inverted style={{ backgroundColor: "#84C1FF",borderBottom: "4px solid #2185d0" }}>
-      <Menu.Item as={Link} to="/" header>
+      <Menu.Item as={Link} to="/posts" header>
         <Icon name="home" size="large" /> SideProject
       </Menu.Item>
       <Menu.Item>
@@ -36,7 +36,7 @@ function Header() {
             <Menu.Item as={Link} to="/new-post">
               <Icon name="edit" /> 發表文章
             </Menu.Item>
-            <Menu.Item as={Link} to="/my">
+            <Menu.Item as={Link} to="/my/posts">
               <Icon name="user circle" /> 會員
             </Menu.Item>
             <Menu.Item onClick={handleLogout}>
