@@ -6,6 +6,7 @@ import Posts from "./Page/Posts";
 import NewPost from "./Page/NewPost";
 import Post from "./Page/Post";
 import Topics from "./Components/Topics";
+import MyMenu from "./Components/MyMenu";
 
 function APP() {
   return (
@@ -50,7 +51,7 @@ const MemberLayout = () => {
     <Container>
       <Grid>
         <Grid.Row>
-          <Grid.Column width={3}>會員選單</Grid.Column>
+          <Grid.Column width={3}><MyMenu /></Grid.Column>
           <Grid.Column width={10}>
             <Outlet />
           </Grid.Column>
