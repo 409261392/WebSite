@@ -5,8 +5,10 @@ import Signin from "./Page/Signin";
 import Posts from "./Page/Posts";
 import NewPost from "./Page/NewPost";
 import Post from "./Page/Post";
+import MyPosts from "./Page/MyPosts";
 import Topics from "./Components/Topics";
 import MyMenu from "./Components/MyMenu";
+import MyCollections from "./Page/MyCollections";
 
 function APP() {
   return (
@@ -21,8 +23,8 @@ function APP() {
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/new-post" element={<NewPost />}></Route>
         <Route path="/my" element={<MemberLayout />}>
-          <Route path="/my/posts" element={"我的文章"} />
-          <Route path="/my/collections" element={"我的收藏"} />
+          <Route path="/my/posts" element={<MyPosts />} />
+          <Route path="/my/collections" element={<MyCollections />} />
           <Route path="/my/settings" element={"會員資料"} />
         </Route>
       </Routes>
