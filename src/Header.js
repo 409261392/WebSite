@@ -4,14 +4,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import firebase from "./utils/firebase";
 import { useNavigate } from "react-router-dom";
 
-function Header() {
+function Header({user}) {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged(setUser);
-    return () => unsubscribe();
-  }, []);
 
   const handleLogout = useCallback(() => {
     firebase

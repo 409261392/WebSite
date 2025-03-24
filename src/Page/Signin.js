@@ -26,7 +26,7 @@ function Signin() {
         .auth()
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
-          navigate("/");
+          navigate("/posts");
           setLoading(false);
         })
         .catch((error) => {
@@ -50,7 +50,7 @@ function Signin() {
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then(() => {
-          navigate("/");
+          navigate("/posts");
           setLoading(false);
         })
         .catch((error) => {
